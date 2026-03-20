@@ -1,0 +1,654 @@
+/* ═══════════════════════════════════════════════════════════════
+   HimTrek – style.css
+   Matches screenshots exactly:
+   Banner · About (Reo Purgyil) · Services · Guide · Footer
+═══════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────
+   CSS VARIABLES  (all brand values here)
+───────────────────────────────────────*/
+:root {
+  /* colours */
+  --peach:          #f5c4a7;     /* peach sun, separators */
+  --peach-light:    #fad5bf;
+  --about-bg:       #f5c5a8;     /* about section warm peach */
+  --services-bg:    #0e0e0e;     /* near-black */
+  --guide-bg:       #140810;     /* very dark maroon */
+  --footer-bg:      #580826;     /* deep wine/burgundy */
+  --red-btn:        #c0392b;     /* Book Now border */
+  --white:          #ffffff;
+  --black:          #000000;
+  --text-dark:      rgba(0,0,0,0.72);
+  --text-muted:     rgba(0,0,0,0.62);
+  --text-white-dim: rgba(255,255,255,0.55);
+
+  /* layout */
+  --w: 1440px;
+
+  /* typography */
+  --font: 'Roboto', sans-serif;
+}
+
+/* ─────────────────────────────────────
+   RESET
+───────────────────────────────────────*/
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: #fff; overflow-x: hidden; }
+img  { display: block; max-width: 100%; }
+a    { text-decoration: none; }
+ul   { list-style: none; }
+
+/* ─────────────────────────────────────
+   PAGE WRAPPER
+───────────────────────────────────────*/
+.page { width: var(--w); margin: 0 auto; }
+
+/* Site hidden while loader runs */
+.site-hidden  { opacity: 0; pointer-events: none; transition: opacity 0.9s ease; }
+.site-visible { opacity: 1; pointer-events: auto; }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   LOADER
+═══════════════════════════════════════════════════════════════ */
+.loader {
+  position: fixed; inset: 0;
+  background: #0a050e;
+  z-index: 9999;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.9s ease, visibility 0.9s ease;
+}
+.loader.fade-out { opacity: 0; visibility: hidden; }
+
+/* Stars */
+.loader-stars { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.loader-stars span {
+  position: absolute;
+  background: #fff; border-radius: 50%;
+  animation: twinkle 2.5s infinite alternate;
+}
+@keyframes twinkle { from { opacity: 0.15; } to { opacity: 0.9; } }
+
+/* Mountain silhouette SVG */
+.loader-mtn-svg {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  width: 100%; height: 240px;
+  animation: mtn-rise 1.2s 0.3s cubic-bezier(0.22,1,0.36,1) both;
+  opacity: 0; transform: translateY(50px);
+}
+@keyframes mtn-rise { to { opacity: 1; transform: translateY(0); } }
+
+/* Centre */
+.loader-content {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 10px;
+  text-align: center; margin-bottom: 100px;
+}
+
+.loader-icon {
+  width: 72px; height: 54px; margin-bottom: 6px;
+  animation: pop 0.8s 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+  transform: scale(0);
+}
+@keyframes pop { to { transform: scale(1); } }
+
+.loader-brand {
+  font-size: 68px; font-weight: 400;
+  text-transform: uppercase; color: var(--white);
+  letter-spacing: 0.1em; line-height: 1;
+  animation: fade-up 0.8s 0.9s ease both;
+  opacity: 0; transform: translateY(18px);
+}
+.loader-brand span { font-weight: 900; color: var(--peach); }
+
+.loader-tagline {
+  font-size: 18px; color: var(--peach);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  animation: fade-up 0.8s 1.2s ease both;
+  opacity: 0; transform: translateY(18px);
+}
+
+@keyframes fade-up { to { opacity: 1; transform: translateY(0); } }
+
+.loader-bar-outer {
+  margin-top: 30px; width: 260px; height: 3px;
+  background: rgba(255,255,255,0.12); border-radius: 3px; overflow: hidden;
+  animation: fade-up 0.8s 1.4s ease both;
+  opacity: 0;
+}
+.loader-bar-inner {
+  height: 100%; width: 0%;
+  background: var(--peach); border-radius: 3px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 1 · HERO BANNER
+═══════════════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  width: var(--w); height: 835px;
+  overflow: hidden;
+}
+
+/* 4K background photo */
+.hero-bg-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center center;
+  z-index: 0;
+}
+
+/* White gradient overlay (left side) */
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0.85)  0%,
+    rgba(255,255,255,0.55) 35%,
+    rgba(255,255,255,0.10) 60%,
+    rgba(255,255,255,0.00) 80%
+  );
+}
+
+/* Peach sun circle */
+.hero-sun {
+  position: absolute;
+  left: 310px; top: 138px;
+  width: 430px; height: 430px;
+  border-radius: 50%;
+  background: var(--peach-light);
+  opacity: 0.75;
+  pointer-events: none; z-index: 2;
+}
+
+/* Birds */
+.hero-birds {
+  position: absolute;
+  left: 520px; top: 178px;
+  width: 240px; height: 100px;
+  pointer-events: none; z-index: 4;
+}
+
+/* ─ Navigation ─ */
+.nav {
+  position: absolute;
+  left: 0; top: 0; right: 0;
+  padding: 28px 122px 0;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  z-index: 20;
+}
+
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo-svg { width: 74px; height: 54px; flex-shrink: 0; }
+
+.nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+.nav-brand {
+  font-size: 26px; font-weight: 400;
+  text-transform: uppercase; color: var(--black);
+  letter-spacing: 0.02em;
+}
+.nav-brand strong { font-weight: 700; }
+.nav-tagline {
+  font-size: 10px; color: #555;
+  letter-spacing: 0.12em; margin-top: 3px;
+  text-transform: uppercase;
+}
+
+.nav-right { display: flex; align-items: center; gap: 48px; }
+.nav-links { display: flex; gap: 54px; }
+.nav-links a {
+  font-size: 17px; color: var(--black);
+  letter-spacing: 0.04em;
+  transition: opacity 0.2s;
+}
+.nav-links a:hover,
+.nav-links a.active { opacity: 0.6; }
+
+/* "BOOK NOW" pill button */
+.nav-btn {
+  background: var(--black); color: var(--white);
+  font-family: var(--font); font-size: 17px;
+  letter-spacing: 0.04em;
+  padding: 11px 28px; border-radius: 50px;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+.nav-btn:hover { background: #333; transform: translateY(-1px); }
+
+/* ─ Hero text ─ */
+.hero-content {
+  position: absolute;
+  left: 122px; top: 228px;
+  z-index: 10;
+}
+.hero-heading {
+  font-size: 78px; font-weight: 900;
+  text-transform: uppercase; color: var(--black);
+  line-height: 1.06; margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+.hero-sub {
+  font-size: 28px; color: rgba(0,0,0,0.55);
+  margin-bottom: 50px;
+}
+.hero-cta {
+  display: inline-block;
+  font-size: 20px; font-weight: 500; color: var(--black);
+  border-bottom: 4px solid var(--black);
+  padding: 12px 3px 9px;
+  transition: opacity 0.2s;
+}
+.hero-cta:hover { opacity: 0.6; }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 2 · ABOUT (Reo Purgyil)
+═══════════════════════════════════════════════════════════════ */
+.about {
+  position: relative;
+  width: var(--w); height: 882px;
+  background: var(--about-bg);
+  overflow: hidden;
+}
+
+/* ─ Right photo ─ */
+.about-photo {
+  position: absolute;
+  right: 0; top: 0;
+  width: 780px; height: 882px;
+  overflow: hidden;
+}
+.about-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: left top;
+}
+/* Fade photo into peach on left */
+.about-photo::before {
+  content: ''; position: absolute;
+  left: 0; top: 0; width: 240px; height: 100%;
+  background: linear-gradient(to right, var(--about-bg), transparent);
+  z-index: 1;
+}
+/* Fade bottom into dark */
+.about-photo::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 200px;
+  background: linear-gradient(to top, #1a0c12, transparent);
+  z-index: 1;
+}
+
+/* ─ Bottom dark silhouette ─ */
+.about-mtn-silhouette {
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 260px;
+  pointer-events: none; z-index: 2;
+  overflow: hidden;
+}
+.about-mtn-silhouette img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center bottom;
+  filter: brightness(0.07) saturate(0);
+}
+
+/* ─ Birds ─ */
+.about-birds {
+  position: absolute;
+  left: 820px; top: 55px;
+  width: 180px; height: 70px;
+  pointer-events: none; z-index: 3;
+}
+
+/* ─ Left text ─ */
+.about-text {
+  position: absolute;
+  left: 90px; top: 68px;
+  width: 620px; z-index: 4;
+}
+
+.about-heading {
+  font-size: 52px; font-weight: 900;
+  color: var(--black); line-height: 1.15;
+  margin-bottom: 22px; text-transform: uppercase;
+}
+
+.about-sep {
+  width: 62px; height: 6px;
+  background: var(--black); margin-bottom: 48px;
+}
+
+.about-features { display: flex; flex-direction: column; gap: 0; margin-bottom: 38px; }
+.about-row { display: flex; gap: 36px; margin-bottom: 0; }
+
+.about-feat {
+  display: flex; align-items: center;
+  gap: 9px; margin-bottom: 16px;
+}
+.about-feat svg { flex-shrink: 0; }
+.about-feat span {
+  font-size: 16px; color: var(--text-dark);
+  white-space: nowrap;
+}
+
+.about-desc {
+  font-size: 17.5px; color: #111;
+  line-height: 1.72;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 3 · SERVICES
+═══════════════════════════════════════════════════════════════ */
+.services {
+  position: relative;
+  width: var(--w); height: 980px;
+  background: var(--services-bg);
+  overflow: hidden;
+}
+
+/* ─ Topographic dashed SVG ─ */
+.svc-topo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+}
+
+/* ─ Bottom illustrated art ─ */
+.svc-bottom-art {
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 340px;
+  pointer-events: none; z-index: 1;
+  overflow: hidden;
+}
+.svc-bottom-art img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center bottom;
+}
+/* Warm orange/red tone overlay to match the illustrated forest */
+.svc-bottom-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(100,10,30,0.85) 0%,
+    rgba(200,60,10,0.55) 45%,
+    transparent 100%
+  );
+}
+
+/* ─ Header ─ */
+.svc-header {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 20px;
+  padding-top: 72px;
+  text-align: center;
+}
+
+.svc-title {
+  font-size: 54px; font-weight: 700;
+  color: var(--white);
+}
+
+.svc-sep {
+  width: 62px; height: 6px;
+  background: var(--peach);
+}
+
+.svc-desc {
+  font-size: 19px; color: rgba(255,255,255,0.85);
+  line-height: 1.65; max-width: 660px;
+  margin-top: 8px;
+}
+
+/* ─ Cards ─ */
+.svc-cards {
+  position: relative; z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  margin-top: 60px;
+}
+
+.svc-card {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 36px;
+  transition: transform 0.3s ease;
+}
+.svc-card:hover { transform: translateY(-8px); }
+
+/* Outer dashed ring */
+.svc-circle {
+  position: relative;
+  width: 240px; height: 240px;
+}
+.svc-ring {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  border: 2px dashed rgba(255,255,255,0.35);
+}
+/* Inner photo */
+.svc-photo {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 216px; height: 216px;
+  border-radius: 50%; overflow: hidden;
+}
+.svc-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.svc-card:hover .svc-photo img { transform: scale(1.07); }
+
+.svc-label {
+  font-size: 21px; font-weight: 700;
+  color: var(--white); text-align: center;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 4 · GUIDE & TRAILS
+═══════════════════════════════════════════════════════════════ */
+.guide {
+  position: relative;
+  width: var(--w); height: 700px;
+  background: var(--guide-bg);
+  overflow: hidden;
+}
+
+/* ─ Bottom art ─ */
+.guide-bottom-art {
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 280px;
+  pointer-events: none; z-index: 1;
+  overflow: hidden;
+}
+.guide-bottom-art img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center bottom;
+  filter: saturate(1.4) brightness(0.5);
+}
+.guide-bottom-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(60,5,30,0.92) 0%,
+    rgba(200,50,20,0.38) 55%,
+    transparent 100%
+  );
+}
+
+/* ─ Left column ─ */
+.guide-left {
+  position: absolute;
+  left: 122px; top: 72px;
+  z-index: 2;
+}
+
+.guide-title {
+  font-size: 48px; font-weight: 700;
+  color: var(--white); margin-bottom: 20px;
+}
+.guide-sep {
+  width: 60px; height: 6px;
+  background: var(--peach); margin-bottom: 68px;
+}
+
+.guide-list { display: flex; gap: 50px; margin-bottom: 40px; }
+
+.guide-item { display: flex; flex-direction: column; gap: 28px; width: 280px; }
+
+.guide-profile { display: flex; align-items: center; gap: 20px; }
+
+.guide-avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%; overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid rgba(245,196,167,0.3);
+}
+.guide-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.guide-name {
+  font-size: 22px; font-weight: 600;
+  color: var(--white); margin-bottom: 5px;
+}
+.guide-role {
+  font-size: 18px; color: rgba(255,255,255,0.45);
+}
+
+.guide-quote { font-size: 16px; color: var(--white); line-height: 1.5; }
+
+/* "Book Now" outlined button */
+.guide-btn {
+  display: inline-block;
+  padding: 12px 48px;
+  border: 2px solid var(--red-btn);
+  border-radius: 50px;
+  font-family: var(--font); font-size: 18px; font-weight: 500;
+  color: var(--white); background: transparent;
+  transition: background 0.2s, color 0.2s;
+}
+.guide-btn:hover { background: var(--red-btn); }
+
+/* ─ Right column ─ */
+.guide-right {
+  position: absolute;
+  left: 860px; top: 72px;
+  width: 460px; z-index: 2;
+}
+
+.trails-title {
+  font-size: 48px; font-weight: 700;
+  color: var(--white); margin-bottom: 20px;
+}
+.trails-sep {
+  width: 60px; height: 6px;
+  background: var(--peach); margin-bottom: 48px;
+}
+
+.trails-desc {
+  font-size: 17px; color: rgba(255,255,255,0.75);
+  line-height: 1.65; margin-bottom: 44px;
+}
+
+.trails-list { display: flex; gap: 50px; }
+
+.trail-name {
+  font-size: 17px; font-weight: 700;
+  color: var(--white); margin-bottom: 10px;
+}
+.trail-detail {
+  font-size: 16px; color: rgba(255,255,255,0.45);
+  margin-bottom: 4px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 5 · FOOTER
+═══════════════════════════════════════════════════════════════ */
+.footer {
+  width: var(--w);
+  background: var(--footer-bg);
+  padding: 0 120px;
+}
+
+/* Top row: logo + nav */
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 44px 0 38px;
+}
+
+.footer-logo { display: flex; align-items: center; gap: 10px; }
+.footer-logo-svg { width: 66px; height: 48px; flex-shrink: 0; }
+
+.footer-logo-text { display: flex; flex-direction: column; line-height: 1; }
+.footer-brand {
+  font-size: 26px; font-weight: 400;
+  text-transform: uppercase; color: var(--peach);
+  letter-spacing: 0.03em;
+}
+.footer-brand strong { font-weight: 700; }
+.footer-tagline {
+  font-size: 10px; color: rgba(245,196,167,0.6);
+  letter-spacing: 0.12em; margin-top: 3px;
+  text-transform: uppercase;
+}
+
+.footer-nav { display: flex; gap: 56px; }
+.footer-nav a {
+  font-size: 17px; color: var(--peach);
+  letter-spacing: 0.04em;
+  transition: opacity 0.2s;
+}
+.footer-nav a:hover { opacity: 0.65; }
+
+/* Divider */
+.footer-divider {
+  height: 1px;
+  background: rgba(245,196,167,0.18);
+}
+
+/* Credit line */
+.footer-credit {
+  padding: 28px 0 32px;
+  font-size: 17px; color: rgba(245,196,167,0.7);
+  text-align: center;
+}
+.footer-credit-name {
+  color: var(--peach);
+  font-weight: 500;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLL REVEAL ANIMATIONS
+═══════════════════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-stagger.visible > *:nth-child(1) { transition-delay: 0.00s; opacity:1; transform:none; }
+.reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.14s; opacity:1; transform:none; }
+.reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.28s; opacity:1; transform:none; }

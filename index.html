@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1440">
+  <title>HimTrek – Conquer The Peaks</title>
+  <meta name="description" content="HimTrek – Trekking, mountaineering and adventure in Himachal Pradesh.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════
+       LOADING SCREEN  (3 s)
+  ═══════════════════════════════════ -->
+  <div id="loader" class="loader">
+
+    <!-- Animated star field -->
+    <div class="loader-stars" id="loaderStars"></div>
+
+    <!-- Mountain silhouette at bottom of loader -->
+    <svg class="loader-mtn-svg" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <polygon points="0,320 120,180 240,230 400,90 560,200 720,130 880,210 1040,120 1200,190 1360,150 1440,170 1440,320" fill="#1a0610"/>
+      <polygon points="0,320 80,220 200,260 320,150 480,270 640,160 800,240 960,155 1120,230 1300,170 1440,200 1440,320" fill="#2a0c1a"/>
+      <!-- Snow caps -->
+      <polygon points="400,90 425,130 375,130" fill="#f5c4a7" opacity="0.7"/>
+      <polygon points="720,130 742,165 698,165" fill="#f5c4a7" opacity="0.5"/>
+      <polygon points="1040,120 1065,158 1015,158" fill="#f5c4a7" opacity="0.6"/>
+    </svg>
+
+    <!-- Centre content -->
+    <div class="loader-content">
+      <!-- Logo icon -->
+      <div class="loader-icon">
+        <svg viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="40,4 76,56 4,56" fill="#f5c4a7"/>
+          <polygon points="18,28 46,56 -10,56" fill="#f5c4a7" opacity="0.5"/>
+        </svg>
+      </div>
+
+      <h1 class="loader-brand">HIM<span>TREK</span></h1>
+      <p class="loader-tagline">Where You Experience Real Thrill</p>
+
+      <div class="loader-bar-outer">
+        <div class="loader-bar-inner" id="loaderBar"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════
+       MAIN SITE
+  ═══════════════════════════════════ -->
+  <div id="site" class="site-hidden">
+  <div class="page">
+
+    <!-- ──────────────────────────────
+         SECTION 1 · BANNER / HERO
+    ────────────────────────────────── -->
+    <section class="hero" id="home">
+
+      <!-- 4K mountain background photo -->
+      <img
+        class="hero-bg-img"
+        src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=3840&q=95&fit=crop"
+        alt="Himalayan peaks"
+      >
+      <!-- White overlay so left reads clearly -->
+      <div class="hero-overlay"></div>
+
+      <!-- Peach sun circle -->
+      <div class="hero-sun"></div>
+
+      <!-- Birds (inline SVG, always shows) -->
+      <div class="hero-birds">
+        <svg viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <!-- big bird left -->
+          <path d="M10 60 Q35 32 65 48 Q88 62 118 40" stroke="#111" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M10 60 Q30 76 65 65 Q88 55 118 40" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+          <!-- small bird right -->
+          <path d="M145 32 Q168 14 193 26 Q210 35 230 18" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+          <path d="M145 32 Q160 44 193 38 Q210 33 230 18" stroke="#111" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- ── Navigation ── -->
+      <nav class="nav">
+        <a href="#home" class="nav-logo">
+          <!-- Mountain icon SVG -->
+          <svg class="nav-logo-svg" viewBox="0 0 74 54" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="37,4 70,50 4,50" fill="#000"/>
+            <polygon points="18,28 44,50 -2,50" fill="#000" opacity="0.48"/>
+          </svg>
+          <div class="nav-logo-text">
+            <span class="nav-brand">HIM <strong>TREK</strong></span>
+            <span class="nav-tagline">CONQUER THE PEAKS</span>
+          </div>
+        </a>
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a href="#home" class="active">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#services">SERVICES</a></li>
+          </ul>
+          <a href="#guide" class="nav-btn">BOOK NOW</a>
+        </div>
+      </nav>
+
+      <!-- ── Hero text ── -->
+      <div class="hero-content">
+        <h1 class="hero-heading">EXPLORE<br>THE MOUNTAIN</h1>
+        <p class="hero-sub">Live your deram and explore</p>
+        <a href="#about" class="hero-cta">Explore now</a>
+      </div>
+
+    </section>
+
+
+    <!-- ──────────────────────────────
+         SECTION 2 · ABOUT
+         (Reo Purgyil – Crown of Himachal)
+    ────────────────────────────────── -->
+    <section class="about" id="about">
+
+      <!-- Right: dramatic hiker/mountain photo -->
+      <div class="about-photo">
+        <img
+          src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=2400&q=95&fit=crop&crop=right"
+          alt="Climber on Reo Purgyil"
+        >
+      </div>
+
+      <!-- Bottom dark mountain silhouette -->
+      <div class="about-mtn-silhouette">
+        <img
+          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=2400&q=80&fit=crop&crop=bottom"
+          alt=""
+        >
+      </div>
+
+      <!-- Birds top-right -->
+      <div class="about-birds">
+        <svg viewBox="0 0 180 70" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <path d="M5 42 Q28 18 58 34 Q82 46 115 22" stroke="#555" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M5 42 Q24 56 58 48 Q82 40 115 22" stroke="#555" stroke-width="2" stroke-linecap="round"/>
+          <path d="M135 24 Q153 8 174 20" stroke="#555" stroke-width="2" stroke-linecap="round"/>
+          <path d="M135 24 Q148 32 174 28" stroke="#555" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- Left: text content -->
+      <div class="about-text">
+        <h2 class="about-heading">REO PURGYIL -<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CROWN OF&nbsp; HIMACHAL</h2>
+        <div class="about-sep"></div>
+
+        <div class="about-features">
+          <div class="about-row">
+            <!-- Elevation -->
+            <div class="about-feat">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <polygon points="12,3 22,21 2,21" stroke="rgba(0,0,0,0.7)" stroke-width="1.8"/>
+              </svg>
+              <span>6,816m(22,362ft)</span>
+            </div>
+            <!-- Compass / coordinates -->
+            <div class="about-feat">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="rgba(0,0,0,0.7)" stroke-width="1.8"/>
+                <circle cx="12" cy="12" r="2" stroke="rgba(0,0,0,0.7)" stroke-width="1.5"/>
+                <line x1="12" y1="3" x2="12" y2="7" stroke="rgba(0,0,0,0.7)" stroke-width="1.5"/>
+                <line x1="12" y1="17" x2="12" y2="21" stroke="rgba(0,0,0,0.7)" stroke-width="1.5"/>
+              </svg>
+              <span>31.806′ N , 78.833′E</span>
+            </div>
+          </div>
+          <!-- Location -->
+          <div class="about-feat">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="rgba(0,0,0,0.7)" stroke-width="1.8"/>
+              <circle cx="12" cy="9" r="2.5" stroke="rgba(0,0,0,0.7)" stroke-width="1.5"/>
+            </svg>
+            <span>Kinnaur , Himachal Pradesh (Near Indo-Tibet Border)</span>
+          </div>
+        </div>
+
+        <p class="about-desc">
+          Rising dramatically along the remote India–Tibet frontier, Reo Purgyil
+          stands as the highest peak in Himachal Pradesh and one of the most
+          formidable climbs in the Western Himalaya. This expedition-grade
+          journey leads through stark valleys, glacial moraines, and vast
+          snowfields untouched by mass tourism. Trekkers and climbers face thin
+          air, unpredictable weather, and demanding terrain, making it a true test
+          of endurance and resilience. In return, the mountain offers absolute
+          solitude, pristine alpine beauty, and sweeping views across endless
+          Himalayan ranges. Reaching its slopes is not just an adventure—it is an
+          encounter with raw wilderness at the edge of the sky.
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- ──────────────────────────────
+         SECTION 3 · SERVICES
+    ────────────────────────────────── -->
+    <section class="services" id="services">
+
+      <!-- Topographic dashed contour lines -->
+      <svg class="svc-topo" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <g stroke="#fff" stroke-width="1" fill="none" stroke-dasharray="6 5" opacity="0.12">
+          <ellipse cx="720" cy="400" rx="680" ry="360"/>
+          <ellipse cx="720" cy="400" rx="580" ry="290"/>
+          <ellipse cx="720" cy="400" rx="480" ry="230"/>
+          <ellipse cx="720" cy="400" rx="380" ry="170"/>
+          <ellipse cx="720" cy="400" rx="280" ry="115"/>
+          <ellipse cx="720" cy="400" rx="180" ry="65"/>
+          <path d="M0,180 Q200,140 380,210 Q560,280 740,190 Q920,100 1100,180 Q1280,250 1440,170"/>
+          <path d="M0,320 Q180,280 380,350 Q580,420 780,330 Q980,240 1180,320 Q1360,390 1440,310"/>
+          <path d="M0,500 Q220,460 420,530 Q620,600 820,510 Q1020,420 1220,500 Q1380,560 1440,490"/>
+          <path d="M0,660 Q240,620 440,690 Q640,760 840,670 Q1040,580 1240,660 Q1380,720 1440,650"/>
+          <path d="M50,0 Q200,180 140,440 Q80,700 260,880"/>
+          <path d="M380,0 Q520,180 460,440 Q400,700 560,880"/>
+          <path d="M780,0 Q920,180 860,440 Q800,700 960,880"/>
+          <path d="M1100,0 Q1250,180 1190,440 Q1130,700 1310,880"/>
+          <path d="M1380,0 Q1500,200 1420,460"/>
+          <path d="M200,0 Q100,200 220,500 Q340,800 180,900"/>
+          <path d="M1200,0 Q1350,200 1260,500 Q1170,800 1340,900"/>
+          <path d="M600,0 Q500,200 620,500 Q740,800 580,900"/>
+        </g>
+      </svg>
+
+      <!-- Bottom illustrated forest/mountain art -->
+      <div class="svc-bottom-art">
+        <img
+          src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=3840&q=90&fit=crop&crop=bottom"
+          alt=""
+        >
+        <!-- Warm orange overlay to match the illustrated orange/red forest look -->
+        <div class="svc-bottom-overlay"></div>
+      </div>
+
+      <!-- Heading -->
+      <div class="svc-header">
+        <h2 class="svc-title">Our Services</h2>
+        <div class="svc-sep"></div>
+        <p class="svc-desc">
+          From high-altitude expeditions to scenic family escapes, we deliver safe,<br>
+          guided, and unforgettable mountain experiences across Himachal Pradesh<br>
+          — tailored for every explorer.
+        </p>
+      </div>
+
+      <!-- Three circular service cards -->
+      <div class="svc-cards">
+
+        <div class="svc-card">
+          <div class="svc-circle">
+            <div class="svc-ring"></div>
+            <div class="svc-photo">
+              <img
+                src="https://images.unsplash.com/photo-1527004013197-933b977e2b3d?w=600&q=90&fit=crop"
+                alt="Trekking"
+              >
+            </div>
+          </div>
+          <p class="svc-label">Trekking/Mountaineering</p>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-circle">
+            <div class="svc-ring"></div>
+            <div class="svc-photo">
+              <img
+                src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=90&fit=crop"
+                alt="Family Group Tour"
+              >
+            </div>
+          </div>
+          <p class="svc-label">Family/Group Tour</p>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-circle">
+            <div class="svc-ring"></div>
+            <div class="svc-photo">
+              <img
+                src="https://images.unsplash.com/photo-1544191696-15693073b90c?w=600&q=90&fit=crop"
+                alt="Mountain Biking"
+              >
+            </div>
+          </div>
+          <p class="svc-label">Mountain Biking/Rafting</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ──────────────────────────────
+         SECTION 4 · GUIDE & TRAILS
+    ────────────────────────────────── -->
+    <section class="guide" id="guide">
+
+      <!-- Bottom illustrated plant/forest art -->
+      <div class="guide-bottom-art">
+        <!-- Dark forest silhouette overlay at very bottom -->
+        <img
+          src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=3840&q=85&fit=crop&crop=bottom"
+          alt=""
+        >
+        <div class="guide-bottom-overlay"></div>
+      </div>
+
+      <!-- ── Left: Guide ── -->
+      <div class="guide-left">
+        <h2 class="guide-title">Guide</h2>
+        <div class="guide-sep"></div>
+
+        <div class="guide-list">
+
+          <!-- Guide 1 -->
+          <div class="guide-item">
+            <div class="guide-profile">
+              <div class="guide-avatar">
+                <img
+                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=85&fit=crop&crop=face"
+                  alt="Rajesh Sharma"
+                >
+              </div>
+              <div>
+                <p class="guide-name">Rajesh Sharma</p>
+                <p class="guide-role">Photographer</p>
+              </div>
+            </div>
+            <p class="guide-quote">One of my favourite place to take picture</p>
+          </div>
+
+          <!-- Guide 2 -->
+          <div class="guide-item">
+            <div class="guide-profile">
+              <div class="guide-avatar">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=85&fit=crop&crop=face"
+                  alt="Seema Negi"
+                >
+              </div>
+              <div>
+                <p class="guide-name">Seema Negi</p>
+                <p class="guide-role">Guide</p>
+              </div>
+            </div>
+            <p class="guide-quote">The best place to hike during summer</p>
+          </div>
+
+        </div>
+
+        <a href="#" class="guide-btn">Book Now</a>
+      </div>
+
+      <!-- ── Right: Trails ── -->
+      <div class="guide-right">
+        <h2 class="trails-title">Trails</h2>
+        <div class="trails-sep"></div>
+        <p class="trails-desc">
+          From high-altitude expeditions to scenic family escapes, we
+          deliver safe, guided, and unforgettable mountain experiences
+          across Himachal Pradesh — tailored for every explorer.
+        </p>
+        <div class="trails-list">
+          <div class="trail-item">
+            <p class="trail-name">Pin Parvati Pass</p>
+            <p class="trail-detail">Distance : 110 km</p>
+            <p class="trail-detail">Time : 9-11 Days</p>
+          </div>
+          <div class="trail-item">
+            <p class="trail-name">Lamkhaga Pass</p>
+            <p class="trail-detail">Distance : 90 km</p>
+            <p class="trail-detail">Time : 8-10 Days</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ──────────────────────────────
+         SECTION 5 · FOOTER
+    ────────────────────────────────── -->
+    <footer class="footer" id="footer">
+      <div class="footer-top">
+
+        <!-- Logo -->
+        <a href="#home" class="footer-logo">
+          <svg class="footer-logo-svg" viewBox="0 0 74 54" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="37,4 70,50 4,50" fill="#f5c4a7"/>
+            <polygon points="18,28 44,50 -2,50" fill="#f5c4a7" opacity="0.5"/>
+          </svg>
+          <div class="footer-logo-text">
+            <span class="footer-brand">HIM <strong>TREK</strong></span>
+            <span class="footer-tagline">CONQUER THE PEAKS</span>
+          </div>
+        </a>
+
+        <!-- Nav -->
+        <ul class="footer-nav">
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#services">SERVICES</a></li>
+          <li><a href="#guide">BOOK NOW</a></li>
+        </ul>
+
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <p class="footer-credit">
+        Designed and Developed by - <span class="footer-credit-name">Lakshya Thakur</span>
+      </p>
+    </footer>
+
+  </div><!-- /page -->
+  </div><!-- /site -->
+
+  <script src="js/main.js"></script>
+</body>
+</html>
